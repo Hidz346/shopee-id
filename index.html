@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoope id</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5; /* Warna abu-abu bersih di awal */
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+
+        /* Kelas ini akan ditambahkan via JS setelah klik OKE */
+        .bg-prank {
+            background-image: url('https://www.image2url.com/r2/default/images/1776256378211-97eabc7b-38a7-4bcc-81b2-d150baf144ab.png') !important;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Popup Box - Diperkecil */
+        #popup {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #f5f5f5; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 280px; /* Ukuran box diperkecil */
+            border: 1px solid #ddd;
+        }
+
+        .verifikasi-icon {
+            font-size: 40px; /* Ikon diperkecil */
+            color: #4285F4;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 18px; /* Judul diperkecil */
+        }
+
+        p {
+            color: #555;
+            font-size: 13px; /* Teks deskripsi diperkecil */
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            background: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover { background: #357ae8; }
+
+        /* Konten Prank */
+        #prank-content {
+            display: none;
+            text-align: center;
+            z-index: 5;
+        }
+
+        #prank-content img {
+            max-width: 250px; /* Gambar ngeledek diperkecil */
+            border-radius: 10px;
+            border: 5px solid white;
+        }
+
+        #prank-content h1 {
+            color: #fff;
+            font-size: 24px; /* Teks prank diperkecil */
+            text-shadow: 2px 2px 4px #000;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="popup">
+        <div class="box">
+            <div class="verifikasi-icon">🛡️</div>
+            <h2>Verifikasi Browser</h2>
+            <p>Klik "OKE" untuk mengonfirmasi bahwa Anda bukan robot dan melanjutkan ke halaman.</p>
+            <button onclick="eksekusiPrank()">OKE</button>
+        </div>
+    </div>
+
+    <div id="prank-content">
+        <img src="ketawa.jpg" alt="Kena Deh!">
+        <h1>SELAMAT ANDA KENA PRANK!</h1>
+    </div>
+
+    <audio id="audioPrank" src="suara_nyaring.mp3"></audio>
+
+    <script>
+        function eksekusiPrank() {
+            // 1. Sembunyikan popup
+            document.getElementById('popup').style.display = 'none';
+            
+            // 2. Munculkan konten prank
+            document.getElementById('prank-content').style.display = 'block';
+            
+            // 3. Pasang background foto yang tadi (baru muncul di sini)
+            document.body.classList.add('bg-prank');
+
+            // 4. Putar suara
+            var audio = document.getElementById('audioPrank');
+            audio.play();
+
+            // 5. Paksa Full Screen
+            var elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            }
+        }
+    </script>
+
+</body>
+</html>
